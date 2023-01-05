@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  import { ReactiveFormsModule,Validators,FormGroup,FormControl  } from '@angular/forms'; 
-import { Router, NavigationExtras, NavigationExtras } from '@angular/router';
+/* import { Router, NavigationExtras, NavigationExtras } from '@angular/router'; */
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { Router, NavigationExtras, NavigationExtras } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router) { }
+  constructor() { }
   titulo_login = "Bienvenido a la aplicacion."
   
   ngOnInit() {
@@ -25,10 +25,7 @@ export class LoginPage implements OnInit {
       console.log("acceso denegado, intentalo de nuevo")
     }
   }
-  let navegador: NavigationExtras = {
-    state: {user: this.usuario.value.user}
-  };
-  this.router.navigate(['/home-alumno'],navegador)
+  
 }
 
 
