@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
  import { ReactiveFormsModule,Validators,FormGroup,FormControl  } from '@angular/forms'; 
-import { RouterLink } from '@angular/router';
+import { Router, NavigationExtras, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private router) { }
   titulo_login = "Bienvenido a la aplicacion."
   
   ngOnInit() {
@@ -21,11 +21,14 @@ export class LoginPage implements OnInit {
   Validar_Alumno(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
       console.log("acceso concedido, bienvenido nicolas")
-      
     }else{
       console.log("acceso denegado, intentalo de nuevo")
     }
   }
+  let navegador: NavigationExtras = {
+    state: {user: this.usuario.value.user}
+  };
+  this.router.navigate(['/home-alumno'],navegador)
 }
 
 
