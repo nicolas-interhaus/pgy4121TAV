@@ -16,7 +16,10 @@ export class LoginPage implements OnInit {
   }
    usuario = new FormGroup({
     user: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
-    pass: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)])
+    pass: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
+    /* user_profesor: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(20)]),
+    pass_alumno: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(15)]),
+ */
   }) 
   Validar_Alumno(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){

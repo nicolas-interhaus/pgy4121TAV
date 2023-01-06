@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Lista de alumnos</ion-title>
+    <ion-icon name="arrow-back-outline" [routerLink]="['/login']"></ion-icon>
+    <ion-title>Lista del curso</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,12 +11,15 @@
   <ion-list>
     <ion-item>
       <ion-label>alumno 1</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>alumno 2</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
     </ion-item>
     <ion-item>
       <ion-label>alumno 3</ion-label>
+      <ion-checkbox slot="start"></ion-checkbox>
     </ion-item>
   </ion-list>
 </ion-content>

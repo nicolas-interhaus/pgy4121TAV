@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'detalle-profesor',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -31,6 +31,8 @@ const routes: Routes = [
     path: 'detalle-alumno',
     loadChildren: () => import('./pages/detalle-alumno/detalle-alumno.module').then( m => m.DetalleAlumnoPageModule)
   },
+  
+
 ];
 
 @NgModule({
