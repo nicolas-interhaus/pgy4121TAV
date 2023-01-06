@@ -25,10 +25,10 @@ export class LoginPage implements OnInit {
   }) 
   Validar_Alumno(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
-      console.log("acceso concedido, bienvenido nicolas")
+      
       this.sendDetailsWithState()
     }else{
-      console.log("acceso denegado, intentalo de nuevo")
+      
       this.controlAlerta()
     }
   }
