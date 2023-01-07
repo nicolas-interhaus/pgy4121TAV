@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule,Validators,FormGroup,FormControl  } from '@angular/forms'; 
 import { NavigationExtras, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, AnimationController, IonButton } from '@ionic/angular';
+import { createAnimation,Animation } from '@ionic/angular';
 
 
 @Component({
@@ -11,10 +12,13 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router:Router, private alertcontroler:AlertController) { }
+  constructor(private router:Router, private alertcontroler:AlertController, private animationCtrl:AnimationController) {
+    
+   }
   titulo_login = "Bienvenido a la aplicacion."
   
   ngOnInit() {
+    this.animado()
   }
    usuario = new FormGroup({
     user: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
@@ -23,10 +27,22 @@ export class LoginPage implements OnInit {
     pass_alumno: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(15)]),
  */
   }) 
+
+  animado(){
+   const animation= this.animationCtrl.create()
+  .addElement(document.querySelector('#boton-ingresar')!)
+  .duration(1500)
+  .iterations(Infinity)
+  .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
+  .fromTo('opacity', '1', '0.2');
+  animation.play();
+  }
+
   Validar_Alumno(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
       
       this.sendDetailsWithState()
+      
     }else{
       
       this.controlAlerta()
