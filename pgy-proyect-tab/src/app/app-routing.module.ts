@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'inicio-aplicacion',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -36,6 +36,7 @@ const routes: Routes = [
     path: 'inicio-aplicacion',
     loadChildren: () => import('./pages/inicio-aplicacion/inicio-aplicacion.module').then( m => m.InicioAplicacionPageModule)
   },
+
 
   
 

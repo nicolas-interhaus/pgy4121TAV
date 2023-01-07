@@ -23,9 +23,8 @@ export class LoginPage implements OnInit {
    usuario = new FormGroup({
     user: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
     pass: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
-    /* user_profesor: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(20)]),
-    pass_alumno: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(15)]),
- */
+    
+ 
   }) 
 
   animado(){
@@ -38,15 +37,16 @@ export class LoginPage implements OnInit {
   animation.play();
   }
 
-  Validar_Alumno(){
+  Validar_Usuario(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
       
       this.sendDetailsWithState()
       
+    }else if(this.usuario.value.user=="profesor" && this.usuario.value.pass=="admin"){
+        this.NavegarProfesor()
     }else{
-      
-      this.controlAlerta()
-    }
+        this.controlAlerta()
+      }
   }
   async controlAlerta(){
     const alert = await this.alertcontroler.create({
@@ -65,7 +65,14 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/home-alumno'],navigationExtras);
     
   }
-  
+  NavegarProfesor(){
+    console.log("datos a enviar",this.usuario.value.user)
+    let navigationExtras: NavigationExtras = {
+      state: {user: this.usuario.value.user}
+    };
+    this.router.navigate(['/home-profesor'],navigationExtras);
+    
+  }
   
 }
 
