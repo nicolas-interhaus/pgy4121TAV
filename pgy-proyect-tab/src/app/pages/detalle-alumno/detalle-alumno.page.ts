@@ -1,4 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
+import { AlertController, AnimationController, IonButton } from '@ionic/angular';
+import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-alumno',
@@ -8,16 +10,26 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 export class DetalleAlumnoPage implements OnInit {
 
 
-  constructor() { }
+  userHome:any;
+  constructor(private activeroute: ActivatedRoute, private router:Router) {
+    this.activeroute.queryParams.subscribe(params=>{
+      if (this.router.getCurrentNavigation()?.extras.state){
+        this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
+        console.log("Datos a mostrar: ",this.userHome);
+      }
+    })
+   }
 
   ngOnInit() {
+    this.controlAlerta()
   }
-  /* @ViewChild('popover') popover;
-
-  isOpen = false;
-
-  presentPopover(e: Event) {
-    this.popover.event = e;
-    this.isOpen = true;
-  } */
+  async controlAlerta(){
+    const alert = await this.alertcontroler.create({
+      header: 'El dispositivo necesita tener acceso a la cámara para continuar',
+      subHeader:'Uso de la camara',
+      message:'Aqui aparecera la cámara',
+      buttons:['OK'],
+    });
+    await alert.present();
+  }
 }
