@@ -10,7 +10,7 @@ import { createAnimation,Animation } from '@ionic/angular';
 export class DetalleProfesorPage implements OnInit {
 
   userHome:any;
-  constructor(private activeroute: ActivatedRoute, private router:Router) {
+  constructor(private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
         this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];

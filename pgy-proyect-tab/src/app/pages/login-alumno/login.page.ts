@@ -29,19 +29,16 @@ export class LoginPage implements OnInit {
 
   animado(){
    const animation= this.animationCtrl.create()
-  .addElement(document.querySelector('#boton-ingresar')!)
+  .addElement(document.querySelector('#card')!)
   .duration(1500)
   .iterations(Infinity)
   .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
   .fromTo('opacity', '1', '0.2');
   animation.play();
   }
-
   Validar_Usuario(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
-      
       this.sendDetailsWithState()
-      
     }else if(this.usuario.value.user=="profesor" && this.usuario.value.pass=="admin"){
         this.NavegarProfesor()
     }else{
@@ -63,7 +60,6 @@ export class LoginPage implements OnInit {
       state: {user: this.usuario.value.user}
     };
     this.router.navigate(['/home-alumno'],navigationExtras);
-    
   }
   NavegarProfesor(){
     console.log("datos a enviar",this.usuario.value.user)

@@ -19,13 +19,11 @@ userHome:any;
 
   ngOnInit() {
   }
-  sendDetailsWithState(){
-    console.log("datos a enviar",this.usuario.value.user)
-    let navigationExtras: NavigationExtras = {
-      state: {user: this.usuario.value.user}
-    };
-    this.router.navigate(['/detalle-alumno'],navigationExtras);
-    
-  }
+    navegar(){
+      let navigationExtras: NavigationExtras = {
+        state: {user: this.userHome.value.user}
+      };
+      this.router.navigate(['/detalle-alumno'],navigationExtras);
+    }
 
 }

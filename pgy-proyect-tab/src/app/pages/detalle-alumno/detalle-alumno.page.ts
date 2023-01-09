@@ -11,12 +11,12 @@ import { createAnimation,Animation } from '@ionic/angular';
 export class DetalleAlumnoPage implements OnInit {
 
 
-  userHome:any;
-  constructor(private activeroute: ActivatedRoute, private router:Router) {
+  userDetail:any;
+  constructor(private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
-        this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
-        console.log("Datos a mostrar: ",this.userHome);
+        this.userDetail = this.router.getCurrentNavigation()?.extras.state?.['userHome'];
+        console.log("Datos a mostrar: ",this.userDetail);
       }
     })
    }

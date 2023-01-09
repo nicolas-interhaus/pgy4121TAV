@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card id="aaa">
+  <ion-card id="card">
     <img src="../../../assets/img/login_alumno.png">
     <ion-card-header>
       <ion-card-title>Login</ion-card-title>
@@ -24,6 +24,6 @@
     </ion-item>
   </ion-list>
   </form>
-  <ion-button id="boton-ingresar" shape="round" [disabled]="!usuario.valid" (click)="Validar_Usuario()" 
-   >Ingresar a la aplicacion</ion-button>
+  <ion-button id="boton-ingresar" shape="round" [disabled]="!usuario.valid" 
+  (click)="Validar_Usuario()">Ingresar a la aplicacion</ion-button>
 </ion-content>
