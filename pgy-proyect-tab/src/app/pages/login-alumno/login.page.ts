@@ -36,6 +36,7 @@ export class LoginPage implements OnInit {
   .fromTo('opacity', '1', '0.2');
   animation.play();
   }
+
   Validar_Usuario(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
       this.sendDetailsWithState()
@@ -48,7 +49,7 @@ export class LoginPage implements OnInit {
   async controlAlerta(){
     const alert = await this.alertcontroler.create({
       header: 'ERROR',
-      subHeader:'Tipo_validacion',
+      
       message:'Usuario o contraseña incorrecta',
       buttons:['OK'],
     });
@@ -60,6 +61,7 @@ export class LoginPage implements OnInit {
       state: {user: this.usuario.value.user}
     };
     this.router.navigate(['/home-alumno'],navigationExtras);
+    
   }
   NavegarProfesor(){
     console.log("datos a enviar",this.usuario.value.user)

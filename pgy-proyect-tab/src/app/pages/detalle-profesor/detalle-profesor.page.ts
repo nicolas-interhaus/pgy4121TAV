@@ -20,7 +20,7 @@ export class DetalleProfesorPage implements OnInit {
    }
 
   ngOnInit() {
-    this.controlAlerta()
+   
     this.animado()
   }
   animado(){
@@ -32,14 +32,5 @@ export class DetalleProfesorPage implements OnInit {
    .fromTo('opacity', '1', '0.2');
    animation.play();
    }
-  async controlAlerta(){
-    const alert = await this.alertcontroler.create({
-      header: 'El dispositivo necesita tener acceso a la cámara para continuar',
-      subHeader:'Uso de la camara',
-      message:'Aqui aparecera la cámara',
-      buttons:['OK'],
-    });
-    await alert.present();
-  }
 
 }
