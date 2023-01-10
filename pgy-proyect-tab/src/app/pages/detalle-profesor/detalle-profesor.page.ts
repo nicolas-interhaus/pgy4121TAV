@@ -13,7 +13,7 @@ export class DetalleProfesorPage implements OnInit {
   constructor(private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
-        this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
+        this.userHome = this.router.getCurrentNavigation()?.extras.state?.['userHome'];
         console.log("Datos a mostrar: ",this.userHome);
       }
     })

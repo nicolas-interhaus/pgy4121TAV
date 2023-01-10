@@ -20,8 +20,10 @@ userHome:any;
   ngOnInit() {
   }
     navegar(){
+      console.log("dato que enviare",this.userHome)
       let navigationExtras: NavigationExtras = {
-        state: {user: this.userHome.value.user}
+        
+        state: {user: this.userHome}
       };
       this.router.navigate(['/detalle-alumno'],navigationExtras);
     }

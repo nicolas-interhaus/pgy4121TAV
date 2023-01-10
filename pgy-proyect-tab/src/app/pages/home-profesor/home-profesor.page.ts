@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-profesor',
@@ -20,6 +20,14 @@ export class HomeProfesorPage implements OnInit {
  
 
   ngOnInit() {
+  }
+  navegar(){
+    console.log("dato que enviare",this.userHome)
+    let navigationExtras: NavigationExtras = {
+      
+      state: {user: this.userHome}
+    };
+    this.router.navigate(['/detalle-profesor'],navigationExtras);
   }
 
 }
