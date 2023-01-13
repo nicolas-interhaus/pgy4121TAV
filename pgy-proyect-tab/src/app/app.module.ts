@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 
+import { Storage } from '@ionic/storage';
+
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Storage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,6 +3,7 @@ import { ReactiveFormsModule,Validators,FormGroup,FormControl  } from '@angular/
 import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, AnimationController, IonButton } from '@ionic/angular';
 import { createAnimation,Animation } from '@ionic/angular';
+import { AuthenticationServiceService } from 'src/app/services/authentication-service.service';
 
 
 @Component({
@@ -12,7 +13,10 @@ import { createAnimation,Animation } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router:Router, private alertcontroler:AlertController, private animationCtrl:AnimationController) {
+  constructor(private router:Router,
+     private alertcontroler:AlertController,
+      private animationCtrl:AnimationController,
+      private autenticarServicio: AuthenticationServiceService) {
     
    }
   titulo_login = "Bienvenido a la aplicacion."
@@ -39,7 +43,7 @@ export class LoginPage implements OnInit {
 
   Validar_Usuario(){
     if(this.usuario.value.user=="nicolas" && this.usuario.value.pass=="1234aaa"){
-      this.sendDetailsWithState()
+      this.autenticarServicio.Entrar(this.usuario.value.user,this.usuario.value.pass)
     }else if(this.usuario.value.user=="profesor" && this.usuario.value.pass=="admin"){
         this.NavegarProfesor()
     }else{
