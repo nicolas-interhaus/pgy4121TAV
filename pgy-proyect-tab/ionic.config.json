@@ -1,5 +1,7 @@
 {
   "name": "pgy-proyect-tab",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
