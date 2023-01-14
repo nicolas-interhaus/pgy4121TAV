@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SalvavidasPage } from './pages/salvavidas/salvavidas.page';
 import { AutguardService } from './services/autguard.service';
 
 const routes: Routes = [
@@ -11,8 +12,9 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
+  
   {
     path: 'login',
     loadChildren: () => import('./pages/login-alumno/login.module').then( m => m.LoginPageModule)
@@ -32,11 +34,9 @@ const routes: Routes = [
   {
     path: 'detalle-alumno',
     loadChildren: () => import('./pages/detalle-alumno/detalle-alumno.module').then( m => m.DetalleAlumnoPageModule)
-  },  {
-    path: 'salvavidas',
-    loadChildren: () => import('./pages/salvavidas/salvavidas.module').then( m => m.SalvavidasPageModule)
   },
-
+  {path: '**', component:SalvavidasPage
+  },
 ];
 
 @NgModule({
