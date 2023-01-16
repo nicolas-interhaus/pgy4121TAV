@@ -4,7 +4,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, AnimationController, IonButton } from '@ionic/angular';
 import { createAnimation,Animation } from '@ionic/angular';
 import { AuthenticationServiceService } from 'src/app/services/authentication-service.service';
-
+import { ConsumoAPIService } from '../../services/zona-api.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,12 @@ import { AuthenticationServiceService } from 'src/app/services/authentication-se
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router:Router,
+  nombre: string;
+  userHome:any;
+  value = "nicolas";
+  message:any;
+  constructor(private consumoAPI:ConsumoAPIService,
+    private router:Router,
      private alertcontroler:AlertController,
       private animationCtrl:AnimationController,
       private autenticarServicio: AuthenticationServiceService) {
@@ -72,10 +77,15 @@ export class LoginPage implements OnInit {
     let navigationExtras: NavigationExtras = {
       state: {user: this.usuario.value.user}
     };
-    this.router.navigate(['/home-profesor'],navigationExtras);
-    
+    this.router.navigate(['/home-profesor'],navigationExtras); 
   }
-  
+
+  Show(){
+    this.consumoAPI.getPosts().subscribe((res)=>{
+      this.message = '' + res[0].tittle;
+      console.log(res[0]);
+    },(error)=>{
+      console.log(error);
+    });
+  }
 }
-
-

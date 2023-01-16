@@ -12,12 +12,14 @@ import { NavigationExtras, Router } from '@angular/router';
 
 import { Storage } from '@ionic/storage';
 
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule],
+  imports: [HttpClientModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, Storage],
   bootstrap: [AppComponent],
 })
