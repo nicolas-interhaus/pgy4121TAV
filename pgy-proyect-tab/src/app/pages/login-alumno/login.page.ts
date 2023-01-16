@@ -14,9 +14,10 @@ import { ConsumoAPIService } from '../../services/zona-api.service';
 export class LoginPage implements OnInit {
 
   nombre: string;
-  userHome:any;
+  userHome: any;
+  primerTitulo: any;
   value = "nicolas";
-  message:any;
+  message: any;
   constructor(private consumoAPI:ConsumoAPIService,
     private router:Router,
      private alertcontroler:AlertController,
@@ -82,8 +83,8 @@ export class LoginPage implements OnInit {
 
   Show(){
     this.consumoAPI.getPosts().subscribe((res)=>{
-      this.message = '' + res[0].tittle;
-      console.log(res[0]);
+      this.primerTitulo = '' + res[0].tittle;
+      console.log(res[0].tittle +"++++" + this.primerTitulo);
     },(error)=>{
       console.log(error);
     });
