@@ -4,7 +4,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { AlertController, AnimationController, IonButton } from '@ionic/angular';
 import { createAnimation,Animation } from '@ionic/angular';
 import { AuthenticationServiceService } from 'src/app/services/authentication-service.service';
-import { ConsumoAPIService } from '../../services/zona-api.service';
+import { ZonaAPIService } from '../../services/zona-api.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +13,12 @@ import { ConsumoAPIService } from '../../services/zona-api.service';
 })
 export class LoginPage implements OnInit {
 
-  nombre: string;
+  
   userHome: any;
   primerTitulo: any;
   value = "nicolas";
   message: any;
-  constructor(private consumoAPI:ConsumoAPIService,
+  constructor(private consumoAPI:ZonaAPIService,
     private router:Router,
      private alertcontroler:AlertController,
       private animationCtrl:AnimationController,
@@ -82,7 +82,7 @@ export class LoginPage implements OnInit {
   }
 
   Show(){
-    this.consumoAPI.getPosts().subscribe((res)=>{
+    this.consumoAPI.getPost().subscribe((res)=>{
       this.primerTitulo = '' + res[0].tittle;
       console.log(res[0].tittle +"++++" + this.primerTitulo);
     },(error)=>{
