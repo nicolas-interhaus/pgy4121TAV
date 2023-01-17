@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
   
   ngOnInit() {
     this.animado()
+    this.ShowData()
   }
    usuario = new FormGroup({
     user: new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(8)]),
@@ -59,7 +60,6 @@ export class LoginPage implements OnInit {
   async controlAlerta(){
     const alert = await this.alertcontroler.create({
       header: 'ERROR',
-      
       message:'Usuario o contraseña incorrecta',
       buttons:['OK'],
     });
@@ -81,7 +81,7 @@ export class LoginPage implements OnInit {
     this.router.navigate(['/home-profesor'],navigationExtras); 
   }
 
-  Show(){
+  ShowData(){
     this.consumoAPI.getPost().subscribe((res)=>{
       this.primerTitulo = '' + res[0].tittle;
       console.log(res[0].tittle +"++++" + this.primerTitulo);
