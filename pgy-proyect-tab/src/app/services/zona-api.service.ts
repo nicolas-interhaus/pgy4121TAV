@@ -24,7 +24,15 @@ getPost():Observable<any>{
   )
 }
 
-  getPostsId(id){
-    return this.http.get(`${this.url}/posts/${id}`);
-  }
+getPostbyId(id):Observable<any>{
+  return this.http.get(this.url+'/posts/'+id).pipe(
+    retry(3)
+  );
+}
+
+createItem(post):Observable<any>{
+  return this.http.post(this.url+'/post/'+post,this.httpOptions)
+  .pipe(retry(3));
+}
+
 }
