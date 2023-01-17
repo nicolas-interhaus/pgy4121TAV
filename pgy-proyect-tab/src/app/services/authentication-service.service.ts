@@ -34,13 +34,13 @@ export class AuthenticationServiceService {
     if (user == "nicolas"){
       var navigationExtrasOK: NavigationExtras = {
         state: {
-          user_id: '00001',
+          id: '1',
           user_name: 'Nicolas',
           message: 'Bienvenido alumno'
         }
       };
       this.storage.set('USER_INFO', navigationExtrasOK).then((response) => {
-        this.router.navigate(['home'], navigationExtrasOK);
+        this.router.navigate(['home-alumno'], navigationExtrasOK);
         this.authState.next(true);
       });
     }else{

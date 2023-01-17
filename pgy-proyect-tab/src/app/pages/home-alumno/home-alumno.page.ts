@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
+import { ZonaAPIService } from 'src/app/services/zona-api.service';  
 
 @Component({
   selector: 'app-home-alumno',
@@ -8,7 +9,9 @@ import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
 })
 export class HomeAlumnoPage implements OnInit {
 userHome:any;
-  constructor(private activeroute: ActivatedRoute, private router:Router) {
+message:any;
+error:any;
+  constructor(private consumoApi:ZonaAPIService,private activeroute: ActivatedRoute, private router:Router) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
         this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
@@ -16,6 +19,25 @@ userHome:any;
       }
     })
    }
+  
+  Mostrar(){
+    this.consumoApi.getAlbums().subscribe((res)=>{
+      this.message = ''+res[10].title;
+      console.log(this.message);
+  },(error)=>{
+    console.log(error)
+  })
+}
+
+  Actualizar(){
+    var post={
+      "title": "Los Bakanes de programacion de aplicacion mobil"
+    }
+    this.consumoApi.updateAlbum("1",post).subscribe((success)=>{
+      this.message = success.title;
+      console.log(this.message);
+    })
+  }
 
   ngOnInit() {
   }

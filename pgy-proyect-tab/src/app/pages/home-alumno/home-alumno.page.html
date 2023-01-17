@@ -15,19 +15,15 @@
    <ion-card-content>
      <ion-list>
        <ion-item>
-         <ion-label (click)="navegar()">Ramo1</ion-label>
+         <ion-label (click)="navegar()">{{message}}</ion-label>
        </ion-item>
  
-       <ion-item>
-         <ion-label (click)="navegar()">Ramo2</ion-label>
-       </ion-item>
- 
-       <ion-item>
-         <ion-label (click)="navegar()">Ramo3</ion-label>
-       </ion-item>
+       
  
      </ion-list>
    </ion-card-content>
  </ion-card>
+<ion-button (click)="Mostrar()">Cargar los cursos como un campeon</ion-button>
+<ion-button (click)="Actualizar()">Actualizar el nombre de un curso</ion-button>
 
 </ion-content>

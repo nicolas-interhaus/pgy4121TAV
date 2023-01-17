@@ -9,22 +9,22 @@ import { Observable } from 'rxjs';
 })
 export class ZonaAPIService {
 
+  
   httpOptions={
     headers: new HttpHeaders({
       'Content-Type':'application/json',
       'Access-Control-Allow-Origin':'*'
     })
   }
-  url="https://jsonplaceholder.typicode.com/"
+  url='https://jsonplaceholder.typicode.com';
   constructor(private http:HttpClient) { }
 
-  getPost():Observable<any>{
-    return this.http.get(this.url+'/posts/').pipe(
-      retry(3)
-    )
+  
+  getAlbums():Observable<any>{
+    return this.http.get(this.url+'/albums/').pipe(retry(3));
   }
 
-  getPostbyId(id: Int32Array):Observable<any>{
+  getPostbyId(id:any):Observable<any>{
     return this.http.get(this.url+'/posts/'+id).pipe(
       retry(3)
     );
@@ -34,4 +34,9 @@ export class ZonaAPIService {
     return this.http.post(this.url+'/post/'+post,this.httpOptions)
     .pipe(retry(3));
   }
+
+  updateAlbum(id:any,post:any):Observable<any>{
+    return this.http.put(this.url+'/albums/'+id,post,this.httpOptions).pipe(retry(3));
+  }
+
 }

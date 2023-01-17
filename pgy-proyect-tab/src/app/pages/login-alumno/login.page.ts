@@ -82,7 +82,7 @@ export class LoginPage implements OnInit {
   }
 
   ShowData(){
-    this.consumoAPI.getPost().subscribe((res)=>{
+    this.consumoAPI.getAlbums().subscribe((res)=>{
       this.primerTitulo = '' + res[0].tittle;
       console.log(res[0].tittle +"++++" + this.primerTitulo);
     },(error)=>{
