@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SalvavidasPageRoutingModule } from './salvavidas-routing.module';
+import { PageRedirectPageRoutingModule } from './page-redirect-routing.module';
 
-import { SalvavidasPage } from './salvavidas.page';
+import { PageRedirectPage } from './page-redirect.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SalvavidasPageRoutingModule
+    PageRedirectPageRoutingModule
   ],
-  declarations: [SalvavidasPage]
+  declarations: [PageRedirectPage]
 })
-export class SalvavidasPageModule {}
+export class PageRedirectPageModule {}

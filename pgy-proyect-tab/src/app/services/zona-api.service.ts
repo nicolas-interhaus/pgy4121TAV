@@ -18,21 +18,20 @@ export class ZonaAPIService {
   url="https://jsonplaceholder.typicode.com/"
   constructor(private http:HttpClient) { }
 
-getPost():Observable<any>{
-  return this.http.get(this.url+'/posts/').pipe(
-    retry(3)
-  )
-}
+  getPost():Observable<any>{
+    return this.http.get(this.url+'/posts/').pipe(
+      retry(3)
+    )
+  }
 
-getPostbyId(id):Observable<any>{
-  return this.http.get(this.url+'/posts/'+id).pipe(
-    retry(3)
-  );
-}
+  getPostbyId(id: Int32Array):Observable<any>{
+    return this.http.get(this.url+'/posts/'+id).pipe(
+      retry(3)
+    );
+  }
 
-createItem(post):Observable<any>{
-  return this.http.post(this.url+'/post/'+post,this.httpOptions)
-  .pipe(retry(3));
-}
-
+  createItem(post: string):Observable<any>{
+    return this.http.post(this.url+'/post/'+post,this.httpOptions)
+    .pipe(retry(3));
+  }
 }

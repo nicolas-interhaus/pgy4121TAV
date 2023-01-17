@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SalvavidasPage } from './salvavidas.page';
+import { PageRedirectPage } from './page-redirect.page';
 
-describe('SalvavidasPage', () => {
-  let component: SalvavidasPage;
-  let fixture: ComponentFixture<SalvavidasPage>;
+describe('PageRedirectPage', () => {
+  let component: PageRedirectPage;
+  let fixture: ComponentFixture<PageRedirectPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SalvavidasPage ],
+      declarations: [ PageRedirectPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SalvavidasPage);
+    fixture = TestBed.createComponent(PageRedirectPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
