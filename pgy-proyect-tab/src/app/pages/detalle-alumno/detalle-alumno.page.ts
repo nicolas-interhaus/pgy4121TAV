@@ -13,8 +13,7 @@ export class DetalleAlumnoPage implements OnInit {
 
 
   userDetail:any;
-  constructor(private camarita: Camera,
-    private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
+  constructor(private camarita: Camera,private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
         this.userDetail = this.router.getCurrentNavigation()?.extras.state?.['userHome'];
