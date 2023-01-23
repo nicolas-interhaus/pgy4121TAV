@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { AlertController, AnimationController, IonButton } from '@ionic/angular';
 import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
 import { createAnimation,Animation } from '@ionic/angular';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
 @Component({
   selector: 'app-detalle-alumno',
@@ -12,7 +13,8 @@ export class DetalleAlumnoPage implements OnInit {
 
 
   userDetail:any;
-  constructor(private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
+  constructor(private camarita: Camera,
+    private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
         this.userDetail = this.router.getCurrentNavigation()?.extras.state?.['userHome'];
@@ -42,5 +44,19 @@ export class DetalleAlumnoPage implements OnInit {
       buttons:['OK'],
     });
     await alert.present();
+  }
+  AbrirCamara(){
+    const options: CameraOptions ={
+      quality: 100,
+      destinationType: this.camarita.DestinationType.FILE_URI,
+      encodingType: this.camarita.EncodingType.JPEG,
+      mediaType: this.camarita.MediaType.PICTURE
+    }
+    this.camarita.getPicture(options).then((ImageData: any)=>{
+      let base64Image = 'data:image/jpeg;base64,'+ImageData;
+      console.log(base64Image);
+    },(err: any)=>{
+
+    });
   }
 }
