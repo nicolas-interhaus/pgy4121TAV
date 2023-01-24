@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, AnimationController, IonButton } from '@ionic/angular';
 import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
 import { createAnimation,Animation } from '@ionic/angular';
+import { AuthenticationServiceService } from 'src/app/services/authentication-service.service';
+import { ZonaAPIService } from 'src/app/services/zona-api.service';
 @Component({
   selector: 'app-detalle-profesor',
   templateUrl: './detalle-profesor.page.html',
@@ -10,7 +12,8 @@ import { createAnimation,Animation } from '@ionic/angular';
 export class DetalleProfesorPage implements OnInit {
 
   userHome:any;
-  constructor(private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
+  listaCurso:any=[];
+  constructor(private consumoApi:ZonaAPIService,private activeroute: ActivatedRoute, private router:Router,private alertcontroler:AlertController, private animationCtrl:AnimationController) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
         this.userHome = this.router.getCurrentNavigation()?.extras.state?.['userHome'];
@@ -21,7 +24,7 @@ export class DetalleProfesorPage implements OnInit {
 
   ngOnInit() {
    
-    this.animado()
+    this.Mostrar()
   }
   animado(){
     const animation= this.animationCtrl.create()
@@ -32,5 +35,15 @@ export class DetalleProfesorPage implements OnInit {
    .fromTo('opacity', '1', '0.2');
    animation.play();
    }
+   Mostrar(){
+    this.consumoApi.getAlbums().subscribe((res)=>{
+      
+      this.listaCurso=res;
+      console.log(this.listaCurso);
+      
+  },(error)=>{
+    console.log(error)
+  })
+}
 
 }

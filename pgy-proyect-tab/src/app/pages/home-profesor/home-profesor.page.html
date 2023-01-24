@@ -14,17 +14,13 @@
     </ion-card-header>
     <ion-card-content>
       <ion-list>
-        <ion-item>
-          <ion-label (click)="navegar()">Curso1</ion-label>
+        <ion-item *ngFor= "let x of listaCurso.slice(0,10)">
+          <ion-label (click)="navegar()" >id del curso =>{{x.id}}</ion-label>
+          <ion-label (click)="navegar()" >asignatura =>{{x.title}}</ion-label>
+        
         </ion-item>
   
-        <ion-item>
-          <ion-label (click)="navegar()">Curso2</ion-label>
-        </ion-item>
-  
-        <ion-item>
-          <ion-label (click)="navegar()">Curso3</ion-label>
-        </ion-item>
+        
   
       </ion-list>
     </ion-card-content>

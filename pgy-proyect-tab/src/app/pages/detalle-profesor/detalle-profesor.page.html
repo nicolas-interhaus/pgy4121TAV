@@ -6,23 +6,16 @@
 </ion-header>
 
 <ion-content>
-  <p>Aqui estara el codigo qr</p>
+  
   <ion-card id="icon">
-    <img src="../../../assets/img/Imagen-prueba.jpg">
+    <img src="../../../assets/img/generatedQrCode.png">
 
   </ion-card>
   <ion-list>
-    <ion-item>
-      <ion-label>alumno 1</ion-label>
+    <ion-item *ngFor= "let x of listaCurso.slice(0,15)">
+      <ion-label>{{x.title}}</ion-label>
       <ion-checkbox slot="start"></ion-checkbox>
     </ion-item>
-    <ion-item>
-      <ion-label>alumno 2</ion-label>
-      <ion-checkbox slot="start"></ion-checkbox>
-    </ion-item>
-    <ion-item>
-      <ion-label>alumno 3</ion-label>
-      <ion-checkbox slot="start"></ion-checkbox>
-    </ion-item>
+    
   </ion-list>
 </ion-content>

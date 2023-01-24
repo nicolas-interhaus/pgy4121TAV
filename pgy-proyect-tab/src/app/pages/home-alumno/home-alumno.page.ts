@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ZonaAPIService } from 'src/app/services/zona-api.service';  
+import { AuthenticationServiceService } from 'src/app/services/authentication-service.service';
 
 @Component({
   selector: 'app-home-alumno',
@@ -11,6 +12,7 @@ export class HomeAlumnoPage implements OnInit {
 userHome:any;
 message:any;
 error:any;
+listaCurso:any=[];
   constructor(private consumoApi:ZonaAPIService,private activeroute: ActivatedRoute, private router:Router) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
@@ -22,8 +24,10 @@ error:any;
   
   Mostrar(){
     this.consumoApi.getAlbums().subscribe((res)=>{
-      this.message = ''+res[10].title;
-      console.log(this.message);
+      
+      this.listaCurso=res;
+      console.log(this.listaCurso);
+      
   },(error)=>{
     console.log(error)
   })
@@ -34,20 +38,22 @@ error:any;
       "title": "Los Bakanes de programacion de aplicacion mobil"
     }
     this.consumoApi.updateAlbum("1",post).subscribe((success)=>{
-      this.message = success.title;
-      console.log(this.message);
+      this.listaCurso = success.title;
+      console.log(this.listaCurso);
     })
   }
 
   ngOnInit() {
+    
   }
-    navegar(){
-      console.log("dato que enviare",this.userHome)
-      let navigationExtras: NavigationExtras = {
+  navegar(){
+    console.log("dato que enviare",this.userHome)
+    let navigationExtras: NavigationExtras = {
         
-        state: {user: this.userHome}
-      };
-      this.router.navigate(['/detalle-alumno'],navigationExtras);
-    }
+      state: {user: this.userHome}
+    };
+    this.router.navigate(['/detalle-alumno'],navigationExtras);
+  }
+
 
 }

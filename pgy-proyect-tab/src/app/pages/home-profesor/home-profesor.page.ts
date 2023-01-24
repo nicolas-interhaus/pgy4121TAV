@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { AuthenticationServiceService } from 'src/app/services/authentication-service.service';
+import { ZonaAPIService } from 'src/app/services/zona-api.service';
 
 @Component({
   selector: 'app-home-profesor',
@@ -8,7 +10,8 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 })
 export class HomeProfesorPage implements OnInit {
   userHome:any;
-  constructor(private activeroute: ActivatedRoute, private router:Router) {
+  listaCurso:any=[];
+  constructor(private consumoApi:ZonaAPIService,private activeroute: ActivatedRoute, private router:Router) {
     this.activeroute.queryParams.subscribe(params=>{
       if (this.router.getCurrentNavigation()?.extras.state){
         this.userHome = this.router.getCurrentNavigation()?.extras.state?.['user'];
@@ -17,9 +20,19 @@ export class HomeProfesorPage implements OnInit {
     })
    }
 
- 
+   Mostrar(){
+    this.consumoApi.getAlbums().subscribe((res)=>{
+      
+      this.listaCurso=res;
+      console.log(this.listaCurso);
+      
+  },(error)=>{
+    console.log(error)
+  })
+}
 
   ngOnInit() {
+    this.Mostrar()
   }
   navegar(){
     console.log("dato que enviare",this.userHome)
