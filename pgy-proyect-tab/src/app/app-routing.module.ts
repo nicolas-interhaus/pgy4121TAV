@@ -22,19 +22,27 @@ const routes: Routes = [
   },
   {
     path: 'home-alumno',
-    loadChildren: () => import('./pages/home-alumno/home-alumno.module').then( m => m.HomeAlumnoPageModule)
+    loadChildren: () => import('./pages/home-alumno/home-alumno.module').then( m => m.HomeAlumnoPageModule),
+    canActivate: [AutguardService]
+
   },
   {
     path: 'home-profesor',
-    loadChildren: () => import('./pages/home-profesor/home-profesor.module').then( m => m.HomeProfesorPageModule)
+    loadChildren: () => import('./pages/home-profesor/home-profesor.module').then( m => m.HomeProfesorPageModule),
+    canActivate: [AutguardService]
+
   },
   {
     path: 'detalle-profesor',
-    loadChildren: () => import('./pages/detalle-profesor/detalle-profesor.module').then( m => m.DetalleProfesorPageModule)
+    loadChildren: () => import('./pages/detalle-profesor/detalle-profesor.module').then( m => m.DetalleProfesorPageModule),
+    canActivate: [AutguardService]
+
   },
   {
     path: 'detalle-alumno',
-    loadChildren: () => import('./pages/detalle-alumno/detalle-alumno.module').then( m => m.DetalleAlumnoPageModule)
+    loadChildren: () => import('./pages/detalle-alumno/detalle-alumno.module').then( m => m.DetalleAlumnoPageModule),
+    canActivate: [AutguardService]
+
   },
   {
     path: 'page-redirect',

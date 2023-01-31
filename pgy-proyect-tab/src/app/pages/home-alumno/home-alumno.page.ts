@@ -21,7 +21,9 @@ listaCurso:any=[];
       }
     })
    }
-  
+   ngOnInit() {
+    
+   }
   Mostrar(){
     this.consumoApi.getAlbums().subscribe((res)=>{
       
@@ -35,17 +37,19 @@ listaCurso:any=[];
 
   Actualizar(){
     var post={
-      "title": "Los Bakanes de programacion de aplicacion mobil"
+      "title": "Los mejores de programacion de aplicacion movil"
     }
+    console.log(this.listaCurso);
     this.consumoApi.updateAlbum("1",post).subscribe((success)=>{
-      this.listaCurso = success.title;
-      console.log(this.listaCurso);
+      console.log("success = "+success.title);
+      this.listaCurso[0].title = success.title;
+      
+      
     })
+    console.log(this.listaCurso);
   }
 
-  ngOnInit() {
-    
-  }
+  
   navegar(){
     console.log("dato que enviare",this.userHome)
     let navigationExtras: NavigationExtras = {

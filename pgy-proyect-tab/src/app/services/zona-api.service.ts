@@ -36,7 +36,11 @@ export class ZonaAPIService {
   }
 
   updateAlbum(id:any,post:any):Observable<any>{
+    console.log(this.url+'/albums/'+id);
+    console.log(post);
+    console.log(this.httpOptions);
     return this.http.put(this.url+'/albums/'+id,post,this.httpOptions).pipe(retry(3));
+
   }
 
 }
